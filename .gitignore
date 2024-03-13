@@ -1,0 +1,15 @@
+/*
+/build/*
+/build/*/*
+/build/*/*/*
+
+!/.devcontainer/
+!/.vscode/
+!/components/
+!/main/
+!/.gitignore
+!/CMakeLists.txt
+!/README.md
+!/sdkconfig
+!/sdkconfig.old
+!/dependencies.lock
