@@ -1,3 +1,21 @@
+/*
+ * Proyecto: Sistema de Monitorización con ESP32 y BMP280
+ * Archivo: main.c
+ * Descripción:
+ * Este archivo principal del proyecto contiene la lógica principal para la monitorización de datos de presión y temperatura
+ * utilizando un sensor BMP280 y una conexión Wi-Fi en un microcontrolador ESP32. El proyecto incluye tareas para la lectura
+ * del sensor, control de LEDs, y envío de datos mediante solicitudes HTTP a un servidor web. El código está diseñado para
+ * ser ejecutado en el framework ESP-IDF.
+ * 
+ * 
+ * 
+ * Nombre: David Martinez Henares
+ * Email: thpuppetmaster@gmail.com
+ * Universidad: UPV-EHU
+ */
+
+
+
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "FreeRTOS/task.h"
@@ -33,6 +51,8 @@ void app_main(void)
 
 
 //? TAREA PRINCIPAL(MAIN)
+
+
 void mainTask(void *pvParameters)
 {
 
