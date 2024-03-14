@@ -66,6 +66,15 @@ esp_err_t wifi_launch(){
 
 /**
  * @brief Maneja los eventos de la conexión WiFi
+ * 
+ * ?@method: static void wifi_event_handler(void *event_handler_arg, esp_event_base_t event_base, int32_t event_id, void *even_data);
+ * 
+ * Esta función se encarga de manejar los eventos relacionados con la conexión WiFi en un dispositivo ESP32.
+ * 
+ * @param event_handler_arg  Argumento del controlador de eventos
+ * @param event_base         Base del evento
+ * @param event_id           ID del evento
+ * @param even_data          Datos del evento
  */
 static void wifi_event_handler(void *event_handler_arg, esp_event_base_t event_base, int32_t event_id, void *even_data)
 {

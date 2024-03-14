@@ -23,6 +23,7 @@
         "sys.h": "c",
         "err.h": "c",
         "freertos.h": "c",
-        "sensorbmp280.h": "c"
+        "sensorbmp280.h": "c",
+        "esp_err.h": "c"
     }
 }
