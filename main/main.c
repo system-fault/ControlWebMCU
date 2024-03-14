@@ -4,7 +4,9 @@
 #include "esp_log.h"
 #include "esp_err.h"
 #include "sensorbmp280.h"
+#include "init_gpio.h"
 #include "init_custom_wifi.h"
+
 
 
 #define DELAY 5000
@@ -19,6 +21,7 @@ void app_main(void)
 {
     ESP_ERROR_CHECK(wifi_launch());
     ESP_ERROR_CHECK(init_bmp280());
+    ESP_ERROR_CHECK(init_led());
     xTaskCreatePinnedToCore(bmp280_Task, "bmp280_Task", configMINIMAL_STACK_SIZE * 8, NULL, 5, NULL, APP_CPU_NUM);
 
     while (1)
