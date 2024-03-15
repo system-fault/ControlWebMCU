@@ -1,24 +1,23 @@
-/*
-* Nombre: David Martinez Henares
-* Email: thpuppetmaster@gmail.com
-* Universidad: UPV-EHU
-*
-* Archivo: sensor_bmp280.h
-*
-* Descripción:
-* Este archivo de cabecera define las funciones y estructuras necesarias para la lectura de un sensor BMP280 en el framework ESP-IDF.
-* La biblioteca proporciona funciones para inicializar el sensor, leer datos de presión y temperatura, y actualizar una estructura de datos con
-* los valores obtenidos del sensor.
-
-*/
-
 /**
- * @file sensorbmp280.h
+ * @headerfile sensorbmp280.h
+ * 
+ * @brief Cabecera para la biblioteca sensorbmp280, que define las funciones y estructuras necesarias para la lectura de un sensor BMP280 en el framework ESP-IDF.
+ *        
+ * Descripción:
+ * Este archivo de cabecera define las funciones y estructuras necesarias para la lectura de un sensor BMP280 en el framework ESP-IDF.
+ * La biblioteca proporciona funciones para inicializar el sensor, leer datos de presión y temperatura, y actualizar una estructura de datos con
+ * los valores obtenidos del sensor.
+ * 
+ * @authors David Martinez Henares
+ * @email: thpuppetmaster@gmail.com
+ * @universidad: UPV-EHU
+ *
  * @defgroup bmp280 bmp280
  * @{
  *
- * ESP-IDF app
- */
+ * @tipo: ESP-IDF app
+ */ 
+
 
 #ifndef SENSOR_BMP280_H
 #define SENSOR_BMP280_H

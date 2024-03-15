@@ -1,6 +1,8 @@
-/*
- * Proyecto: Sistema de Monitorización con ESP32 y BMP280
- * Archivo: main.c
+/**
+ * @file main.c
+ * 
+ * @brief Archivo principal del proyecto "Sistema de Monitorización con ESP32 y BMP280".
+ *        
  * Descripción:
  * Este archivo principal del proyecto contiene la lógica principal para la monitorización de datos de presión y temperatura
  * utilizando un sensor BMP280 y una conexión Wi-Fi en un microcontrolador ESP32. El proyecto incluye tareas para la lectura
@@ -9,10 +11,13 @@
  * 
  * 
  * 
- * Nombre: David Martinez Henares
- * Email: thpuppetmaster@gmail.com
- * Universidad: UPV-EHU
- */
+ * @author David Martinez Henares
+ * @email: thpuppetmaster@gmail.com
+ * @universidad: UPV-EHU
+ * 
+ * 
+ */ 
+
 
 
 
@@ -25,6 +30,7 @@
 #include "init_gpio.h"
 #include "init_custom_wifi.h"
 #include "custom_HTTP_client.h"
+
 
 #define DELAY 250
 

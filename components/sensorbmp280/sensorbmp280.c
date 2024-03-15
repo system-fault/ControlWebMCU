@@ -1,16 +1,22 @@
-/*
-* Nombre: David Martinez Henares
-* Email: thpuppetmaster@gmail.com
-* Universidad: UPV-EHU
-* 
-* Archivo: sensor_bmp280.c
-* 
-* Descripción:
-* Este archivo de implementación define las funciones necesarias para interactuar con un sensor BMP280 en el framework ESP-IDF. 
-* Incluye funciones para inicializar el sensor, 
-* leer datos de presión y temperatura, y actualizar una estructura de datos con los valores obtenidos del sensor.
-
-*/
+/**
+ * @file sensorbmp280.c
+ * 
+ * @brief Implementación de las funciones necesarias para interactuar con un sensor BMP280 en el framework ESP-IDF.
+ *        
+ * Descripción:
+ * Este archivo de implementación define las funciones necesarias para interactuar con un sensor BMP280 en el framework ESP-IDF. 
+ * Incluye funciones para inicializar el sensor, 
+ * leer datos de presión y temperatura, y actualizar una estructura de datos con los valores obtenidos del sensor.
+ * 
+ * @authors David Martinez Henares
+ * @email: thpuppetmaster@gmail.com
+ * @universidad: UPV-EHU
+ *
+ * @defgroup bmp280 bmp280
+ * @{
+ *
+ * @tipo: ESP-IDF app
+ */ 
 
 #include "sensorbmp280.h"
 

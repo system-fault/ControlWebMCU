@@ -1,12 +1,38 @@
+/**
+ * @file custom_HTTP_client.c
+ *
+ * @brief Este archivo contiene las funciones para el manejo de solicitudes GET y POST
+ *        a un servidor web utilizando la librería custom_HTTP_client.
+ *        
+ * Descripción:
+ * Este código proporciona funciones para manejar solicitudes GET y POST a un servidor web.
+ * Incluye funciones para manejar eventos relacionados con la recepción y envío de datos,
+ * así como tareas para consultar periódicamente el estado del LED y enviar datos de temperatura
+ * y presión al servidor mediante solicitudes HTTP.
+ * Además, define constantes y variables globales necesarias para el funcionamiento del programa.
+ * 
+** Nombre: David Martinez Henares
+** Email: thpuppetmaster@gmail.com
+** Universidad: UPV-EHU
+ */
+
 
 #include "custom_HTTP_client.h"
 
+#define IP_SERVER IP_HOME //& Introduce la ip de tu servidor
+
 static const char *TAG_http_client = "HTTP-CLIENT";
+
+
+static int level;
+datosSensor http_medidas_var;
 
 //$ FUNCIONES PARA MANEJAR LAS PETICIONES GET AL SERVIDOR WEB //
 
-static int level;
-
+/**
+ * @brief Maneja los eventos relacionados con la recepción de datos en una solicitud GET al 
+ *        servidor web.
+*/
 esp_err_t client_event_get_handler(esp_http_client_event_handle_t evt)
 {
     switch (evt->event_id)
@@ -27,13 +53,18 @@ esp_err_t client_event_get_handler(esp_http_client_event_handle_t evt)
     return ESP_OK;
 }
 
+/**
+ * @brief Tarea que consulta el estado del LED mediante una solicitud GET al servidor web.
+ */
 void lectura_estado_led_Task(void *pvParameters)
 {
     while (1)
     {
+            char url[200]; // Asegúrate de que el tamaño del buffer sea suficiente
+            snprintf(url, sizeof(url),"http://%s/control/Proyecto_empotrados/php/variable.php", IP_SERVER);
         // Get estado led
         esp_http_client_config_t config_get = {
-            .url = "http://192.168.1.34/control/Proyecto_empotrados/php/variable.php",
+            .url = url,
             .method = HTTP_METHOD_GET,
             .cert_pem = NULL,
             .event_handler = client_event_get_handler};
@@ -46,6 +77,9 @@ void lectura_estado_led_Task(void *pvParameters)
     }
 }
 
+/**
+ * @brief Actualiza el estado del LED.
+ */
 esp_err_t actualizar_led(int *estado)
 {
 
@@ -56,8 +90,11 @@ esp_err_t actualizar_led(int *estado)
 
 //& FUNCIONES PARA MANEJAR LOS ENVIOS POST AL SERVIDOR WEB //
 
-datosSensor http_medidas_var;
 
+
+/**
+ * @brief Adquiere las medidas de temperatura y presión para su posterior envío al servidor.
+ */
 esp_err_t adq_medidas(datosSensor datos)
 {
 
@@ -70,6 +107,9 @@ esp_err_t adq_medidas(datosSensor datos)
     return ESP_OK;
 }
 
+/**
+ * @brief Maneja los eventos relacionados con el envío de datos de temperatura mediante una solicitud POST al servidor web.
+ */
 esp_err_t client_event_post_handler_temp(esp_http_client_event_handle_t evt)
 {
 
@@ -87,6 +127,10 @@ esp_err_t client_event_post_handler_temp(esp_http_client_event_handle_t evt)
     }
     return ESP_OK;
 }
+
+/**
+ * @brief Maneja los eventos relacionados con el envío de datos de presión mediante una solicitud POST al servidor web.
+ */
 esp_err_t client_event_post_handler_pres(esp_http_client_event_handle_t evt)
 {
 
@@ -106,6 +150,9 @@ esp_err_t client_event_post_handler_pres(esp_http_client_event_handle_t evt)
     return ESP_OK;
 }
 
+/**
+ * @brief Tarea que envía periódicamente datos de temperatura y presión al servidor mediante solicitudes POST.
+ */
 void envio_datos_post_Task(void *pvParameters)
 {
 
@@ -118,11 +165,11 @@ void envio_datos_post_Task(void *pvParameters)
 
         // Temperatura
         char url_temp[200]; // Asegúrate de que el tamaño del buffer sea suficiente
-        snprintf(url_temp, sizeof(url_temp), "http://192.168.1.34/control/Proyecto_empotrados/php/temperatura.php?temperatura=%.2f", temp_debug);
+        snprintf(url_temp, sizeof(url_temp), "http://%s/control/Proyecto_empotrados/php/temperatura.php?temperatura=%.2f", IP_SERVER, temp_debug);
         
         // Presion
         char url_pres[200]; // Asegúrate de que el tamaño del buffer sea suficiente
-        snprintf(url_pres, sizeof(url_pres), "http://192.168.1.34/control/Proyecto_empotrados/php/presion.php?presion=%.2f", pres_debug);
+        snprintf(url_pres, sizeof(url_pres), "http://%s/control/Proyecto_empotrados/php/presion.php?presion=%.2f",IP_SERVER, pres_debug);
 
         //POST temperatura
         esp_http_client_config_t config_post_temp = {
@@ -137,20 +184,5 @@ void envio_datos_post_Task(void *pvParameters)
         esp_http_client_cleanup(client_temp);
 
         vTaskDelay(pdMS_TO_TICKS(500));
-        
-        //POST presion
-        esp_http_client_config_t config_post_pres = {
-            .url = url_pres,
-            .method = HTTP_METHOD_POST,
-            .cert_pem = NULL,
-            .event_handler = client_event_post_handler_pres};
-
-        esp_http_client_handle_t client_pres = esp_http_client_init(&config_post_pres);
-
-        esp_http_client_perform(client_pres);
-        esp_http_client_cleanup(client_pres);
-
-        vTaskDelay(pdMS_TO_TICKS(DELAY_POST_DATA));
-        
     }
 }

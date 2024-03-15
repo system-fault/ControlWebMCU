@@ -1,25 +1,23 @@
-/*
-* Nombre: David Martinez Henares
-* Email: thpuppetmaster@gmail.com
-* Universidad: UPV-EHU
-*
-* Archivo: sensor_bmp280.h
-*
-* Descripción:
-* Este archivo implementa la función init_led, que se encarga de inicializar el LED RGB en un dispositivo ESP32.
-* La función configura los pines correspondientes como salidas GPIO y realiza un parpadeo del LED en verde tres veces como indicador visual
-* de la inicialización.
-
-
-*/
-
 /**
- * @file init_gpio.h
+ * @headerfile sensor_bmp280.h
+ * 
+ * @brief Cabecera para el sensor BMP280, que implementa la función init_led para inicializar el LED RGB en un dispositivo ESP32.
+ *        
+ * Descripción:
+ * Este archivo implementa la función init_led, que se encarga de inicializar el LED RGB en un dispositivo ESP32.
+ * La función configura los pines correspondientes como salidas GPIO y realiza un parpadeo del LED en verde tres veces como indicador visual
+ * de la inicialización.
+ * 
+ * @authors David Martinez Henares
+ * @email: thpuppetmaster@gmail.com
+ * @universidad: UPV-EHU
+ *
  * @defgroup driver/gpio
  * @{
  *
- * ESP-IDF app
- */
+ * @tipo: ESP-IDF app
+ */ 
+
 
 #ifndef INIT_GPIO_H
 #define INIT_GPIO_H

@@ -2,6 +2,8 @@
 /build/*
 /build/*/*
 /build/*/*/*
+/components/custom_HTTP_client/include/mydata_custom_HTTP_client.h
+/components/init_custom_wifi/include/mydata_init_custom_wifi.h
 
 !/.devcontainer/
 !/.vscode/
