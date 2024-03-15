@@ -32,6 +32,10 @@ Este proyecto implementa un sistema de monitorización de datos de presión y te
 
 3. **Compilar y Cargar:** Compila el firmware utilizando el framework ESP-IDF y carga el programa resultante en tu microcontrolador ESP32.
 
+### Configuraciones Adicionales
+
+- **Archivos de Configuración:** Los archivos `mydata_custom_HTTP_client.h` y `mydata_init_custom_wifi.h` son archivos de configuración personal y no son necesarios, ya que las configuraciones pueden realizarse directamente en los archivos `.c` de las respectivas librerías.
+
 ## Uso
 
 1. **Conexión del Hardware:** Conecta el ESP32 a una fuente de alimentación y asegúrate de que esté conectado a la red Wi-Fi configurada.
@@ -47,6 +51,11 @@ Este proyecto implementa un sistema de monitorización de datos de presión y te
 - **Contribuciones:** Las contribuciones al proyecto son bienvenidas. Si tienes ideas para mejorar este proyecto, no dudes en abrir un issue o enviar un pull request con tus sugerencias.
   
 - **Soporte:** Para obtener más información sobre este proyecto o para recibir soporte técnico, ponte en contacto con David a través de Github.
+
+## Licencia
+
+Este proyecto está licenciado bajo la [Licencia MIT](LICENSE).
+
 
 
 

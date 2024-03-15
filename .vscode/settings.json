@@ -26,6 +26,7 @@
         "sensorbmp280.h": "c",
         "esp_err.h": "c",
         "data.h": "c",
-        "mydata.h": "c"
+        "mydata.h": "c",
+        "mydata_init_custom_wifi.h": "c"
     }
 }
