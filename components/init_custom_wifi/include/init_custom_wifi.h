@@ -1,22 +1,23 @@
-/*
-* Nombre: David Martinez Henares
-* Email: thpuppetmaster@gmail.com
-* Universidad: UPV-EHU
-
-
-* Descripción:
-* Esta biblioteca proporciona funciones para manejar la conexión WiFi en dispositivos ESP32.
-* Incluye funciones para configurar y establecer una conexión WiFi, así como para manejar los eventos
-* relacionados con la conexión WiFi.
-*/
-
 /**
- * @file init_custom_wifi.h
+ * @headerfile init_custom_wifi.h
+ * 
+ * @brief Cabecera para la biblioteca init_custom_wifi, que proporciona funciones para manejar la conexión WiFi en dispositivos ESP32.
+ *        
+ * Descripción:
+ * Esta biblioteca proporciona funciones para manejar la conexión WiFi en dispositivos ESP32.
+ * Incluye funciones para configurar y establecer una conexión WiFi, así como para manejar los eventos
+ * relacionados con la conexión WiFi.
+ * 
+ * @authors David Martinez Henares
+ * @email: thpuppetmaster@gmail.com
+ * @universidad: UPV-EHU
+ *
  * @defgroup wifi
  * @{
  *
- * ESP-IDF app
- */
+ * @tipo: ESP-IDF app
+ */ 
+
 
 #ifndef INIT_CUSTOM_WIFI_H
 #define INIT_CUSTOM_WIFI_H
@@ -32,6 +33,7 @@
 #include "nvs_flash.h"
 #include "lwip/err.h"
 #include "lwip/sys.h"
+#include "mydata_init_custom_wifi.h"
 
 
 

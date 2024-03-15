@@ -1,13 +1,32 @@
+/**
+ * @file init_custom_wifi.c
+ * 
+ * @brief Implementación de las funciones para manejar la conexión WiFi en dispositivos ESP32.
+ *        
+ * Descripción:
+ * Este archivo contiene la implementación de las funciones para manejar la conexión WiFi en dispositivos ESP32.
+ * Incluye funciones para realizar la conexión WiFi, manejar eventos relacionados con la conexión WiFi
+ * y lanzar la conexión WiFi.
+ * 
+ * @authors David Martinez Henares
+ * @email: thpuppetmaster@gmail.com
+ * @universidad: UPV-EHU
+ *
+ * @ingroup wifi
+ * @{
+ *
+ * @tipo: ESP-IDF app
+ */ 
+
 
 #include "init_custom_wifi.h"
 
 
 
 
-const char *ssid = "MOVISTAR_481F";
-const char *pass = "z2oUcMz\\BMEG=5Au*btwnL08=iG4w3fEJX=f;Bb&Z#8\"Y7*lm9Iui9ea:n9i*5";
-// const char *ssid = "DavidNet";
-// const char *pass = "lagartijo2345";
+const char *ssid = SSID; //& Sustituye por tu ssid
+const char *pass = PASS; //& Sustituye por tu password
+
 int retryNum = 0;
 
 static void wifi_event_handler(void *event_handler_arg, esp_event_base_t event_base, int32_t event_id, void *even_data);

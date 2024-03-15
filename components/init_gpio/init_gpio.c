@@ -1,3 +1,23 @@
+/**
+ * @file init_gpio.c
+ * 
+ * @brief Implementación de la función init_led para inicializar el LED RGB en un dispositivo ESP32.
+ *        
+ * Descripción:
+ * Este archivo implementa la función init_led, que se encarga de inicializar el LED RGB en un dispositivo ESP32.
+ * La función configura los pines correspondientes como salidas GPIO y realiza un parpadeo del LED en verde tres veces como indicador visual
+ * de la inicialización.
+ * 
+ * @authors David Martinez Henares
+ * @email: thpuppetmaster@gmail.com
+ * @universidad: UPV-EHU
+ *
+ * @ingroup driver/gpio
+ * @{
+ *
+ * @tipo: ESP-IDF app
+ */ 
+
 
 #include "init_gpio.h"
 
