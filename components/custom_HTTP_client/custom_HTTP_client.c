@@ -117,9 +117,6 @@ esp_err_t client_event_post_handler_temp(esp_http_client_event_handle_t evt)
     {
     case HTTP_EVENT_HEADERS_SENT:
         ESP_LOGI(TAG_http_client, "Datos de temperatura enviados al servidor.");
-        gpio_set_level(LED_PIN_B,true);
-        vTaskDelay(pdMS_TO_TICKS(50));
-        gpio_set_level(LED_PIN_B,false);
         break;
 
     default:
@@ -138,9 +135,7 @@ esp_err_t client_event_post_handler_pres(esp_http_client_event_handle_t evt)
     {
     case HTTP_EVENT_HEADERS_SENT:
         ESP_LOGI(TAG_http_client, "Datos de presion enviados al servidor.");
-        gpio_set_level(LED_PIN_B,true);
-        vTaskDelay(pdMS_TO_TICKS(100));
-        gpio_set_level(LED_PIN_B,false);
+        
 
         break;
 
@@ -163,15 +158,15 @@ void envio_datos_post_Task(void *pvParameters)
 
         // Direcciones para hacer POST
 
-        // Temperatura
+        //! Temperatura
         char url_temp[200]; // Asegúrate de que el tamaño del buffer sea suficiente
         snprintf(url_temp, sizeof(url_temp), "http://%s/control/Proyecto_empotrados/php/temperatura.php?temperatura=%.2f", IP_SERVER, temp_debug);
         
-        // Presion
+        //$ Presion
         char url_pres[200]; // Asegúrate de que el tamaño del buffer sea suficiente
         snprintf(url_pres, sizeof(url_pres), "http://%s/control/Proyecto_empotrados/php/presion.php?presion=%.2f",IP_SERVER, pres_debug);
 
-        //POST temperatura
+        //! POST temperatura
         esp_http_client_config_t config_post_temp = {
             .url = url_temp,
             .method = HTTP_METHOD_POST,
@@ -182,6 +177,22 @@ void envio_datos_post_Task(void *pvParameters)
 
         esp_http_client_perform(client_temp);
         esp_http_client_cleanup(client_temp);
+        
+        //$ POST presion
+        esp_http_client_config_t config_post_pres = {
+            .url = url_pres,
+            .method = HTTP_METHOD_POST,
+            .cert_pem = NULL,
+            .event_handler = client_event_post_handler_pres};
+
+        esp_http_client_handle_t client_pres = esp_http_client_init(&config_post_pres);
+
+        esp_http_client_perform(client_pres);
+        esp_http_client_cleanup(client_pres);
+
+        gpio_set_level(LED_PIN_B,true);
+        vTaskDelay(pdMS_TO_TICKS(100));
+        gpio_set_level(LED_PIN_B,false);
 
         vTaskDelay(pdMS_TO_TICKS(500));
     }
