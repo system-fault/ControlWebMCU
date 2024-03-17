@@ -19,7 +19,7 @@
 
 #include "custom_HTTP_client.h"
 
-#define IP_SERVER IP_HOME //& Introduce la ip de tu servidor
+#define IP_SERVER IP_TACHIKOMA2 //& Introduce la ip de tu servidor
 
 static const char *TAG_http_client = "HTTP-CLIENT";
 
@@ -61,7 +61,7 @@ void lectura_estado_led_Task(void *pvParameters)
     while (1)
     {
             char url[200]; // Asegúrate de que el tamaño del buffer sea suficiente
-            snprintf(url, sizeof(url),"http://%s/control/Proyecto_empotrados/php/variable.php", IP_SERVER);
+            snprintf(url, sizeof(url),"http://%s/control/php/variable.php", IP_SERVER);
         // Get estado led
         esp_http_client_config_t config_get = {
             .url = url,
@@ -160,11 +160,11 @@ void envio_datos_post_Task(void *pvParameters)
 
         //! Temperatura
         char url_temp[200]; // Asegúrate de que el tamaño del buffer sea suficiente
-        snprintf(url_temp, sizeof(url_temp), "http://%s/control/Proyecto_empotrados/php/temperatura.php?temperatura=%.2f", IP_SERVER, temp_debug);
+        snprintf(url_temp, sizeof(url_temp), "http://%s/control/php/temperatura.php?temperatura=%.2f", IP_SERVER, temp_debug);
         
         //$ Presion
         char url_pres[200]; // Asegúrate de que el tamaño del buffer sea suficiente
-        snprintf(url_pres, sizeof(url_pres), "http://%s/control/Proyecto_empotrados/php/presion.php?presion=%.2f",IP_SERVER, pres_debug);
+        snprintf(url_pres, sizeof(url_pres), "http://%s/control/php/presion.php?presion=%.2f",IP_SERVER, pres_debug);
 
         //! POST temperatura
         esp_http_client_config_t config_post_temp = {
