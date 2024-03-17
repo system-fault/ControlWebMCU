@@ -25,7 +25,7 @@ Este proyecto implementa un sistema de monitorización de datos de presión y te
 1. **Clonar el Repositorio:** Clona este repositorio en tu entorno de desarrollo local utilizando el siguiente comando:
 
     ```
-    git clone https://tu-repositorio.git
+    git clone https://github.com/system-fault/ControlWebMCU
     ```
 
 2. **Configurar `sdkconfig`:** Asegúrate de configurar el archivo `sdkconfig` con la configuración específica de tu proyecto, incluidas las credenciales de la red Wi-Fi y la dirección del servidor web.
